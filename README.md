@@ -33,4 +33,9 @@ experience for meal discovery, ordering, and delivery.
 ### Provider Homepage
 ![Provider_homepage](src/main/resources/static/images/project_screenshots/Provider_homepage.png)
 
+### Menu_items_table
+![Menu_items_table](src/main/resources/static/images/project_screenshots/Menu_items_table.png)
 
+### Users_table_with_images
+![Users_table_with_images](src/main/resources/static/images/project_screenshots/Users_table_with_images.png
+)
