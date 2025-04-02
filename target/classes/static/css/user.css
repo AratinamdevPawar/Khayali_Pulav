@@ -43,7 +43,7 @@ nav a.icon {
 
 /* Hero Section */
 .hero {
-    background: url("img/Foodie\'s\ Kitchen.png") no-repeat center center/cover;
+    background: url("/images/Kitchen.jpg") no-repeat center center/cover;
     position: relative;
     height: 100vh;
     display: flex;
