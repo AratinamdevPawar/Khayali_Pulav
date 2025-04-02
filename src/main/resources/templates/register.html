@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>Register</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style-magnific-popup.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/icons-main.css" rel="stylesheet">
+    <link href="css/icons-helper.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <div class="row">
+
+            <!-- Left Side (Form) -->
+            <div class="col-md-6 text-center register-inner padding-top-30">
+                <h2 class="comic-text">Register</h2>
+
+                <!-- Success message -->
+                <p class="register_success_box" style="display:none;">We received your message and you'll hear from us soon. Thank You!</p>
+
+                <!-- Register Form -->
+               <form id="register-form" class="contact" action="/register" method="post" th:object="${user}">
+    
+    <input class="register-input white-input" required name="name" id="name" placeholder="Full Name" type="text">
+    <input class="register-input white-input" required name="phone" id="phone" placeholder="Phone Number" type="text">
+    <input class="register-input white-input" required name="email" id="email" placeholder="Email Address" type="email">
+    <input class="register-input white-input" required name="password" id="password" placeholder="Password" type="password">
+    <input class="register-input white-input" required name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" type="password">
+    
+    <select class="register-input white-input" required name="role" id="role">
+        <option value="" disabled selected>Select Role</option>
+        <option value="USER">User</option>
+        <option value="PROVIDER">Provider</option>
+        <option value="ADMIN">Admin</option>
+    </select>
+
+    <input value="Register" id="submit-button" class="register-submit mt-3" type="submit">
+
+    <p th:if="${error}" class="text-danger" th:text="${error}"></p>
+    <p th:if="${success}" class="text-success" th:text="${success}"></p>
+
+</form>
+ <p class="mt-3">Already have an account? <a href="/login" class="text-primary">Login here</a></p>
+
+            </div>
+
+            <!-- Right Side (Image) -->
+            <div class="col-md-6">
+                  <img src="/images/provider_img.jpg" alt="picture" class="width-100">
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JavaScript Validation -->
+    <script>
+        function validateForm() {
+            let isValid = true;
+
+            // Get field values
+            let name = document.getElementById("name").value.trim();
+            let phone = document.getElementById("phone").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let password = document.getElementById("password").value.trim();
+            let confirmPassword = document.getElementById("confirmPassword").value.trim();
+            let role = document.getElementById("role").value;
+
+            // Name validation
+            if (name === "") {
+                document.getElementById("nameError").innerText = "Full Name is required";
+                isValid = false;
+            } else {
+                document.getElementById("nameError").innerText = "";
+            }
+
+            // Phone validation (10-digit number)
+            let phonePattern = /^[0-9]{10}$/;
+            if (!phonePattern.test(phone)) {
+                document.getElementById("phoneError").innerText = "Enter a valid 10-digit phone number";
+                isValid = false;
+            } else {
+                document.getElementById("phoneError").innerText = "";
+            }
+
+            // Email validation
+            let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(email)) {
+                document.getElementById("emailError").innerText = "Enter a valid email address";
+                isValid = false;
+            } else {
+                document.getElementById("emailError").innerText = "";
+            }
+
+            // Password validation (Minimum 6 characters, at least one uppercase, one lowercase, one number)
+            let passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
+            if (!passwordPattern.test(password)) {
+                document.getElementById("passwordError").innerText = "Password must be at least 6 characters and include uppercase, lowercase, and a number";
+                isValid = false;
+            } else {
+                document.getElementById("passwordError").innerText = "";
+            }
+
+            // Confirm Password validation
+            if (confirmPassword !== password) {
+                document.getElementById("confirmPasswordError").innerText = "Passwords do not match";
+                isValid = false;
+            } else {
+                document.getElementById("confirmPasswordError").innerText = "";
+            }
+
+            // Role validation
+            if (role === "") {
+                document.getElementById("roleError").innerText = "Please select a role";
+                isValid = false;
+            } else {
+                document.getElementById("roleError").innerText = "";
+            }
+
+            return isValid; // Prevents form submission if any field is invalid
+        }
+    </script>
+
+</body>
+</html>

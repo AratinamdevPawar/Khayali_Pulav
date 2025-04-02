@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/profile.css" />
+    <title>Profile Page</title>
+</head>
+<body>
+    <div class="profile-card">
+        
+
+        <h2>Profile Details</h2>
+
+        <!-- Success or error messages -->
+        <div th:if="${success}" class="success-message" th:text="${success}"></div>
+        <div th:if="${error}" class="error-message" th:text="${error}"></div>
+
+        <!-- Profile Information -->
+        <div class="profile-info" id="profileInfo">
+            <div class="profile-picture">
+                <img th:if="${hasProfileImage}" th:src="@{'/user/profile-image/' + ${user.id}}" alt="Profile Picture" />
+                <img th:unless="${hasProfileImage}" src="/images/default-profile.png" alt="Default Profile" />
+            </div>
+            
+            <p><strong>Name:</strong> <span th:text="${user.name}"></span></p>
+            <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+            <p><strong>Mobile:</strong> <span th:text="${user.phone}"></span></p>
+            <p><strong>City:</strong> <span th:text="${user.city != null ? user.city : 'Not specified'}"></span></p>
+            <p><strong>Pin Code:</strong> <span th:text="${user.pinCode != null ? user.pinCode : 'Not specified'}"></span></p>
+            <button id="editProfile">Edit Profile</button>
+            <button id="backBtn">Back</button>
+        </div>
+        
+        <!-- Edit Profile Form -->
+        <div class="profile-form" id="profileForm" style="display: none;">
+            <form th:action="@{/profile/update}" method="post" enctype="multipart/form-data">
+                <div class="profile-picture-preview">
+                    <img id="profilePreview" th:if="${hasProfileImage}" th:src="@{'/user/profile-image/' + ${user.id}}" alt="Profile Preview" />
+                    <img id="profilePreview" th:unless="${hasProfileImage}" src="/images/default-profile.png" alt="Default Profile" />
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" th:value="${user.name}" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" th:value="${user.email}" disabled />
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Mobile Number:</label>
+                    <input type="tel" id="phone" name="phone" th:value="${user.phone}" />
+                </div>
+
+                <div class="form-group">
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city" th:value="${user.city}" />
+                </div>
+
+                <div class="form-group">
+                    <label for="pinCode">Pin Code:</label>
+                    <input type="text" id="pinCode" name="pinCode" th:value="${user.pinCode}" />
+                </div>
+
+                <div class="form-group">
+                    <label for="profileImageFile">Profile Image:</label>
+                    <input type="file" id="profileImageFile" name="profileImageFile" accept="image/*" onchange="previewImage(this)" />
+                    <small>Select a new image to change your profile picture</small>
+                </div>
+
+                <button type="submit">Update Profile</button>
+                <button type="button" id="cancelEdit">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('editProfile').addEventListener('click', function() {
+            document.getElementById('profileInfo').style.display = 'none';
+            document.getElementById('profileForm').style.display = 'block';
+        });
+
+        document.getElementById('cancelEdit').addEventListener('click', function() {
+            document.getElementById('profileForm').style.display = 'none';
+            document.getElementById('profileInfo').style.display = 'block';
+            
+            const preview = document.getElementById('profilePreview');
+            if (preview.hasAttribute('data-original-src')) {
+                preview.src = preview.getAttribute('data-original-src');
+            }
+        });
+
+        // Back Button Functionality
+        document.getElementById('backBtn').addEventListener('click', function() {
+            window.history.back(); // Navigates to the previous page
+        });
+
+        function previewImage(input) {
+            const preview = document.getElementById('profilePreview');
+            if (!preview.hasAttribute('data-original-src')) {
+                preview.setAttribute('data-original-src', preview.src);
+            }
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            const preview = document.getElementById('profilePreview');
+            if (preview) {
+                preview.setAttribute('data-original-src', preview.src);
+            }
+        });
+    </script>
+</body>
+</html>

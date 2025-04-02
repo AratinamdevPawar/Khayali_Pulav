@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <title>Home page</title>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <div class="logo">
+      <img src="/images/logo.png" alt="Logo" />
+    </div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="/provider/uploadMenu">Upload Menu</a>
+      <a href="#" class="icon">&#10148;</a>
+      <a href="#" class="icon">&#9825;</a>
+    </nav>
+     <div class="profile-section">
+      <img id="profileBtn" class="profile-icon" src="images/profile.png" alt="Profile" />
+      <button id="logoutBtn" class="logout-btn">Logout</button>
+    </div>
+  </header>
+
+  <!-- Hero Section with Background Image -->
+  <section class="hero">
+  </section>
+
+  <!-- How it Works Section -->
+  <section class="heading-section">
+    <h2>How we <em><strong>Khayali Pulav</strong></em> works?</h2>
+  </section>
+
+  <section class="features-section">
+    <div class="feature">
+      <div class="icon green"><i class="fa-solid fa-utensils"></i></div>
+      <h3>Explore Home-Cooked Meals</h3>
+      <p>Enter your location and find verified home cooks within a 2 km radius.</p>
+    </div>
+    <div class="feature">
+      <div class="icon orange"><i class="fa-solid fa-list"></i></div>
+      <h3>Choose Your Meal</h3>
+      <p>Choose from authentic, home-cooked meals. Each cook has a daily order limit to ensure quality.</p>
+    </div>
+    <div class="feature">
+      <div class="icon green"><i class="fa-solid fa-check-circle"></i></div>
+      <h3>Order with Confidence</h3>
+      <p>Place your order directly through our platform. Every home cook has a maximum order limit to ensure food quality.</p>
+    </div>
+    <div class="feature">
+      <div class="icon orange"><i class="fa-solid fa-clock"></i></div>
+      <h3>Real-Time Order Management</h3>
+      <p>Orders reduce the cook’s available slots. Once the limit is reached, no further orders will be accepted.</p>
+    </div>
+    <div class="feature">
+      <div class="icon green"><i class="fa-solid fa-box"></i></div>
+      <h3>Fresh & Authentic Meals</h3>
+      <p>Enjoy freshly prepared meals delivered to your doorstep or opt for a convenient pickup.</p>
+    </div>
+    <div class="feature">
+      <div class="icon orange"><i class="fa-solid fa-heart"></i></div>
+      <h3>Support Local Home Cooks</h3>
+      <p>Every order supports passionate home chefs in your community, providing you with a homely dining experience.</p>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-column">
+      <h3>QUICK LINKS</h3>
+      <a href="#">Register</a>
+      <a href="#">Today's Menu</a>
+      <a href="#">About Us</a>
+    </div>
+    <div class="footer-column">
+      <h3>CONTACTS</h3>
+      <p><i class="fas fa-map-marker-alt"></i> Satara, Maharashtra</p>
+      <p><i class="fas fa-phone-alt"></i> +94 423-23-221</p>
+      <p><i class="fas fa-envelope"></i> khayalipulav@gmail.com</p>
+    </div>
+    <div class="footer-column">
+      <h3>KEEP IN TOUCH</h3>
+      <div class="subscribe">
+        <input type="email" placeholder="Your Email">
+        <button><i class="fas fa-arrow-right"></i></button>
+      </div>
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-tiktok"></i>
+        <i class="fab fa-whatsapp"></i>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>Terms and conditions | Privacy | © 2025 khayaliPulav</p>
+  </div>
+</footer>
+<script>
+// Navigate to profile page when clicking profile icon
+const profileBtn = document.getElementById('profileBtn');
+profileBtn.onclick = function () {
+  window.location.href = '/profile';
+};
+
+//Navigate to logout page when clicking logout button
+document.getElementById('logoutBtn').onclick = function () {
+  window.location.href = '/logout'; // Redirects to /logout
+};
+
+
+</script>
+</body>
+</html>

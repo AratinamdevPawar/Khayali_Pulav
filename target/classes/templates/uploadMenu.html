@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" th:href="@{/css/uploadmenu.css}" />
+  <title>Khayali Pulao</title>
+</head>
+
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="logo">
+      <img src="/images/logo.png" alt="Logo" />
+    </div>
+    <nav>
+      <button id="backBtn">Back</button>
+    </nav>
+
+    
+  </header>
+
+  <!-- Hero Section with Form -->
+  <section class="hero">
+    <div class="overlay">
+      <h1>Welcome To Khayali Pulav</h1>
+      <p>Upload Your Today's Menu Here..! </p>
+      <div class="menu-box">
+        <h2>Add Today's Menu</h2>
+        <form id="menuForm" th:action="@{/provider/uploadMenu}" method="post">
+    		<textarea id="foodList" name="itemName" placeholder="Enter your food items"></textarea>
+    		<input type="number" id="priceList" name="price" step="0.01" placeholder="Enter price (e.g., 100/-)" required />
+    		<button type="submit">Submit Menu</button>
+    		        <p th:if="${success}" th:text="${success}" style="color: green;"></p>
+    		
+		</form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Display Section -->
+<section class="display-section">
+  <h3>Your Menu for Today</h3>
+  <p th:text="'Menu items count: ' + ${#lists.size(todayMenu)}"></p> <!-- Debugging line -->
+
+  <table>
+    <thead>
+      <tr>
+        <th>Food Item</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="item : ${todayMenu}">
+        <td th:text="${item.itemName}"></td>
+        <td th:text="${item.price}"></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+<script>
+
+// Back Button Functionality
+document.getElementById('backBtn').addEventListener('click', function() {
+    window.history.back(); // Navigates to the previous page
+});
+</script>
+
+ 
+</body>
+
+</html>

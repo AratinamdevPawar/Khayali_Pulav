@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/user.css" />
+  <title>User Page</title>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+ 	<div class="logo"><img src="/images/logo.png" alt="Logo" /></div>    <nav>
+    </nav>
+    
+    <div class="profile-section">
+      <img id="profileBtn" class="profile-icon" src="images/profile.png" alt="Profile" />
+      <button id="logoutBtn" class="logout-btn">Logout</button>
+    </div>
+    
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="overlay">
+      <h1>Discover & Book</h1>
+      <p>Enjoy Your Home Cooked Food!</p>
+      <!-- Search Section -->
+      <div class="search-box">
+        <input type="text" placeholder="Add Your location Here ! Address, neighborhood..." />
+        <span class="location-icon">&#128205;</span>
+        <button>Search</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Categories Section -->
+  <section class="categories-section">
+    <h2>Today's Menu..!</h2>
+    <h4>Enjoy Your Food with Khayali Pulav..!</h4>
+    <div class="categories-container">
+      <div class="category-card" onclick="openModal('Pizza', 40)">
+        <div class="category-content">
+          <h3>Pizza</h3>
+          <p>Avg price $40</p>
+        </div>
+      </div>
+      <div class="category-card" onclick="openModal('Japanese', 50)">
+        <div class="category-content">
+          <h3>Japanese</h3>
+          <p>Avg price $50</p>
+        </div>
+      </div>
+      <div class="category-card" onclick="openModal('Burgers', 55)">
+        <div class="category-content">
+          <h3>Burgers</h3>
+          <p>Avg price $55</p>
+        </div>
+      </div>
+      <div class="category-card" onclick="openModal('Vegetarian', 40)">
+        <div class="category-content">
+          <h3>Vegetarian</h3>
+          <p>Avg price $40</p>
+        </div>
+      </div>
+      <div class="category-card" onclick="openModal('Bakery', 60)">
+        <div class="category-content">
+          <h3>Bakery</h3>
+          <p>Avg price $60</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popup Modal -->
+  <div id="orderModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div class="provider-name" id="modalTitle">Provider Name</div>
+      <div class="menu-items">Menu Items <br> ------ <br> --------<br>--------- </div>
+      <div class="price">Price: <span id="menuPrice">100</span></div>
+      <a href="#" class="order-btn">ORDER NOW <img src="https://img.icons8.com/ios-filled/50/ffffff/shopping-cart.png" alt="cart"></a>
+    </div>
+  </div>
+
+  <script>
+    // Function to open the modal and update content
+    function openModal(itemName, price) {
+        document.getElementById("modalTitle").innerText = itemName;
+        document.getElementById("menuPrice").innerText = "$" + price;
+        document.getElementById("orderModal").style.display = "block";
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        document.getElementById("orderModal").style.display = "none";
+    }
+
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+        var modal = document.getElementById("orderModal");
+        if (event.target === modal) {
+            closeModal();
+        }
+    }
+    
+ // Navigate to profile page when clicking profile icon
+    const profileBtn = document.getElementById('profileBtn');
+    profileBtn.onclick = function () {
+      window.location.href = '/profile';
+    };
+
+    //Navigate to logout page when clicking logout button
+    document.getElementById('logoutBtn').onclick = function () {
+      window.location.href = '/logout'; // Redirects to /logout
+    };
+
+  </script>
+
+</body>
+</html>
