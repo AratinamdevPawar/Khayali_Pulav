@@ -1,4 +1,4 @@
-## Khayali Pulav 
+#### Khayali Pulav 
 Description : 
 
 Khayali Pulav is a geolocation-based platform connecting users with nearby home-cooked meal providers.
@@ -7,20 +7,30 @@ experience for meal discovery, ordering, and delivery.
 
 
 
-## Khayali Pulav Project screenshots
-[!registration](src/main/resources/static/images/project_screenshots/register_page.png)
+## Khayali Pulav Project Screenshots
 
-[!login](src/main/resources/static/images/project_screenshots/Login_page.png)
+### Registration Page
+![registration](src/main/resources/static/images/project_screenshots/register_page.png)
 
-[!profile](src/main/resources/static/images/project_screenshots/Profile.png)
+### Login Page
+![login](src/main/resources/static/images/project_screenshots/Login_page.png)
 
-[!update_profile](src/main/resources/static/images/project_screenshots/Update_profile.png)
+### Profile Page
+![profile](src/main/resources/static/images/project_screenshots/Profile.png)
 
-[!upload_menu](src/main/resources/static/images/project_screenshots/UploadMenu.png)
+### Update Profile
+![update_profile](src/main/resources/static/images/project_screenshots/Update_profile.png)
 
-[!todaymenu](src/main/resources/static/images/project_screenshots/Today_menu.png)
+### Upload Menu
+![upload_menu](src/main/resources/static/images/project_screenshots/UploadMenu.png)
 
-[!MenuOfProvider](src/main/resources/static/images/project_screenshots/MenuOfProvider.png)
+### Today's Menu
+![todaymenu](src/main/resources/static/images/project_screenshots/Today_menu.png)
 
-[!Provider_homepage](src/main/resources/static/images/project_screenshots/Provider_homepage.png)
+### Menu of Provider
+![MenuOfProvider](src/main/resources/static/images/project_screenshots/MenuOfProvider.png)
+
+### Provider Homepage
+![Provider_homepage](src/main/resources/static/images/project_screenshots/Provider_homepage.png)
+
 
